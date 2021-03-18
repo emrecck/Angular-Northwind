@@ -1,3 +1,11 @@
 <ul class="list-group shadow mb-5 bg-body rounded">
-    <li *ngFor="let item of this.categories" class="list-group-item list-group-item-action">{{ item.categoryName }}</li>
+    <li routerLink="/products">All Products</li>
+    <li 
+    (click)="setCurrentCategory(category)"
+    routerLink="/products/category/{{category.categoryId}}" 
+    *ngFor="let category of this.categories"
+    [class]="getCurrentCategory(category)">
+    {{ category.categoryName }}</li> 
 </ul>
+
+<h1 *ngIf="currentCategory" class="display-1">{{currentCategory.categoryName}} seçtiniz</h1>
